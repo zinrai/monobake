@@ -1,0 +1,21 @@
+{
+  "target": {
+    "backend": {
+      "context": "apps/backend",
+      "dockerfile": "Dockerfile"
+    },
+    "frontend": {
+      "context": "apps/frontend",
+      "dockerfile": "Dockerfile"
+    },
+    "worker": {
+      "context": "apps/worker",
+      "dockerfile": "Dockerfile"
+    }
+  },
+  "group": {
+    "default": {
+      "targets": ["backend", "frontend", "worker"]
+    }
+  }
+}
