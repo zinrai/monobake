@@ -90,41 +90,7 @@ Examples: `backend/v1.0.0`, `frontend/v2.1.0-beta.1`
 
 ## GitHub Actions
 
-```yaml
-name: Release
-
-on:
-  push:
-    tags:
-      - '*/*'
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install monobake
-        run: |
-          curl -sL https://github.com/zinrai/monobake/releases/latest/download/monobake-linux-amd64 \
-            -o /usr/local/bin/monobake
-          chmod +x /usr/local/bin/monobake
-
-      - uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and Push
-        env:
-          REGISTRY: ghcr.io/${{ github.repository_owner }}
-        run: |
-          read TARGET VERSION <<< $(monobake -tag ${{ github.ref }})
-          [ -n "$TARGET" ] && docker buildx bake \
-            --set="${TARGET}.tags=${REGISTRY}/${TARGET}:${VERSION}" \
-            "$TARGET" --push
-```
+See [monobake-demo](https://github.com/zinrai/monobake-demo) for a working example.
 
 ## Exit Codes
 
