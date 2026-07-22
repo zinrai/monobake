@@ -37,12 +37,12 @@ Example:
 
 	tagStr := flag.String("tag", "", "Git tag to parse (required)")
 	bakeFile := flag.String("file", DefaultBakeFile, "Path to Bake file")
-	version := flag.Bool("version", false, "Show version")
+	showVersion := flag.Bool("version", false, "Show version")
 
 	flag.Parse()
 
-	if *version {
-		fmt.Println("0.1.0")
+	if *showVersion {
+		printVersion()
 		return ExitOK
 	}
 
