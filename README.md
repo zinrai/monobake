@@ -25,12 +25,6 @@ build targets and versions from Git tags. The goals are:
 * Leave the integration with docker buildx bake to the caller
 * Run the same command both locally and in GitHub Actions
 
-## Installation
-
-```bash
-$ go install github.com/zinrai/monobake@latest
-```
-
 ## How It Works
 
 monobake parses a Git tag like `backend/v1.0.0` and extracts:
